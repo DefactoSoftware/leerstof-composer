@@ -1,9 +1,17 @@
 :root {
-  --red: #ee3154;
-  --yellow: #e2e266;
-  --blue: #31238c;
-
   --padding: 80px;
+}
+
+.theme-1 {
+  --emphasis: #ee3154;
+  --text: #e2e266;
+  --background: #31238c;
+}
+
+.theme-2 {
+  --emphasis: #ff00ff;
+  --text: #ffff00;
+  --background: #0000ff;
 }
 
 @font-face {
@@ -20,7 +28,7 @@ body, * {
 
 body {
   background: #fcfcfc;
-  color: var(--yellow);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   font-family: "proximanova-extrabold", sans-serif;
@@ -32,7 +40,7 @@ body {
 }
 
 .container {
-  background: var(--blue);
+  background: var(--background);
   height: 1080px;
   margin: 50px auto;
   position: relative;
@@ -40,7 +48,7 @@ body {
 }
 
 strong, b {
-  color: var(--red);
+  color: var(--emphasis);
 }
 
 p {
@@ -70,7 +78,7 @@ p {
 }
 
 button {
-  background: var(--red);
+  background: var(--emphasis);
   border: none;
   color: white;
   cursor: pointer;
