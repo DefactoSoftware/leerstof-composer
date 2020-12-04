@@ -1,0 +1,80 @@
+:root {
+  --red: #ee3154;
+  --yellow: #e2e266;
+  --blue: #31238c;
+
+  --padding: 80px;
+}
+
+@font-face {
+  font-family: 'proximanova-extrabold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/proximanova-extrabold-webfont.woff2') format('woff2'),
+       url('fonts/proximanova-extrabold-webfont.woff') format('woff');
+}
+
+body, * {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fcfcfc;
+  color: var(--yellow);
+  display: flex;
+  flex-direction: column;
+  font-family: "proximanova-extrabold", sans-serif;
+  font-size: 100px;
+  line-height: 1.1;
+  margin: 0;
+  min-height: 100vh;
+  text-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
+}
+
+.container {
+  background: var(--blue);
+  height: 1080px;
+  margin: 50px auto;
+  position: relative;
+  width: 1080px
+}
+
+strong, b {
+  color: var(--red);
+}
+
+p {
+  margin: 0;
+}
+
+.content {
+  left: var(--padding);
+  margin-top: -50px;
+  position: absolute;
+  right: var(--padding);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.next {
+  box-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
+  margin-top: 40px;
+  width: 100px;
+}
+
+.logo {
+  bottom: var(--padding);
+  left: var(--padding);
+  position: absolute;
+  width: 200px;
+}
+
+button {
+  background: var(--red);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;  
+  margin: 10px auto;
+  padding: 10px 20px;
+}

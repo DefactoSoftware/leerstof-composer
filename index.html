@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LEERSTOF</title>
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/FileSaver.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-1">
+  <div class="container" id="container">
+    <div class="content">
+      <p contenteditable="true">Ignorance and fear are matters of the mind - and the mind is <b>adaptable</b></p>
+      <img src="next.svg" alt="->" class="next">
+    </div>
+    <img src="logo.svg" alt="LEERSTOF" width="200" height="50" class="logo">
+  </div>
+  <button id='emp'>Emphasize</button>
+  <button id="save">Save</button>
+</body>
+
+<script>
+  $(function () {
+    $("#save").click(function () {
+      html2canvas(document.querySelector("#container")).then(canvas => {
+        canvas.toBlob(function (blob) {
+          saveAs(blob, "screen.png");
+        });
+      });
+    });
+
+    $('#emp').on('click', function () {
+      document.execCommand('bold');
+    });
+  });
+</script>
+
+</html>
