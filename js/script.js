@@ -1,7 +1,8 @@
 save = function () {
   html2canvas(document.querySelector("#container")).then(canvas => {
     canvas.toBlob(function (blob) {
-      saveAs(blob, "screen.png");
+      let filename = prompt('Enter file name');
+      saveAs(blob, filename + ".png");
     });
   });
 };
