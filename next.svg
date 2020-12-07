@@ -1,10 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.95 23.31" class="next">
-  <filter id="dropshadow" height="130%">
-    <feOffset dx="-4" dy="4" />
-    <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
-    <feFlood flood-color="black" flood-opacity=".5" result="color" />
-    <feComposite operator="in" in="color" in2="inverse" result="shadow" />
-    <feComposite operator="over" in="shadow" in2="SourceGraphic" />
-  </filter>
-  <path class="arrow" style="filter:url(#dropshadow)" d="M17.29,23.31V15.64H0v-8H17.29V0L30,11.65Z" />
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#E2E266;}
+</style>
+<g id="Layer_2_1_">
+	<g id="Layer_2_copy_3">
+		<path class="st0" d="M0,0v44h44V0H0z M25.3,33.7V26H8v-8h17.3v-7.7L38,22L25.3,33.7z"/>
+	</g>
+</g>
 </svg>
