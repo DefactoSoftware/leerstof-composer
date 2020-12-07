@@ -23,18 +23,6 @@
   </div>
 </body>
 
-<script>
-  save = function () {
-    html2canvas(document.querySelector("#container")).then(canvas => {
-      canvas.toBlob(function (blob) {
-        saveAs(blob, "screen.png");
-      });
-    });
-  };
-
-  emphasize = function () {
-    document.execCommand('bold');
-  };
-</script>
+<script src="js/script.js"></script>
 
 </html>
