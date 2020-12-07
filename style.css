@@ -53,6 +53,7 @@ body {
 
 strong, b {
   color: var(--emphasis);
+  font-weight: normal;
 }
 
 p {
@@ -107,6 +108,7 @@ p {
 button {
   background: transparent;
   border: 1px solid var(--emphasis);
+  border-radius: 5px;
   color: var(--emphasis);
   cursor: pointer;
   flex: none;
@@ -127,7 +129,7 @@ ul {
 }
 
 li {
-  margin-bottom: 0.3em;
+  padding: 0.15em 0 0.15em 0.6em;
 }
 
 li:before {
@@ -135,4 +137,14 @@ li:before {
   margin: 0 0.1em 0 -0.6em;
   position: absolute;
   text-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
+}
+
+li:focus {
+  background: rgba(255,255,255,.05);
+  margin-left: -0.2em;
+  padding: 0.15em 0 0.15em 0.8em;
+}
+
+li:focus:before {
+  margin: 0 -0.1em 0 -0.6em;
 }

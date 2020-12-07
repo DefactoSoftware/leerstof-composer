@@ -11,18 +11,23 @@ emphasize = function () {
   document.execCommand('bold');
 };
 
-add_item = function () {
+add_item = function (focussed_li) {
   const li = document.createElement("li");
   li.setAttribute("contenteditable", "true");
   li.setAttribute("class", "li");
-  document.querySelector("ul").append(li);
+  insertAfter(li, focussed_li);
   li.focus();
 };
 
+insertAfter = function (newNode, referenceNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
 document.querySelector(".list").addEventListener("keydown", function (e) {
+  var focussed_li = document.activeElement;
   if (e.keyCode === 13) {
     e.preventDefault();
     e.stopPropagation();
-    add_item();
+    add_item(focussed_li);
   }
 });
