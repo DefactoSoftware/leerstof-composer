@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>LEERSTOF</title>
+  <title>LEERSTOF - List</title>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/FileSaver.min.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -12,7 +12,9 @@
 <body class="theme-1">
   <div class="container" id="container">
     <div class="content">
-      <p contenteditable="true">Ignorance and fear are matters of the mind - and the mind is <b>adaptable</b></p>
+      <ul class="list">
+        <li contenteditable="true">The mind is <b>adaptable</b></li>
+      </ul>
       <a href="#" class="next_btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.95 23.31" class="next">
           <filter id="dropshadow" height="130%">
@@ -26,9 +28,10 @@
         </svg>
       </a>
     </div>
-    <img src="logo.svg" class="logo">
+    <img src="logo.svg" class="logo-sm">
   </div>
   <div class="buttons">
+    <button onclick="add_item()">Add item</button>
     <button onclick="emphasize()">Emphasize</button>
     <button onclick="save()" class="save">Save</button>
   </div>
@@ -46,6 +49,22 @@
   emphasize = function () {
     document.execCommand('bold');
   };
+
+  add_item = function () {
+    const li = document.createElement("li");
+    li.setAttribute("contenteditable", "true");
+    li.setAttribute("class", "li");
+    document.querySelector("ul").append(li);
+    li.focus();
+  };
+
+  document.querySelector(".list").addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      e.stopPropagation();
+      add_item();
+    }
+  });
 </script>
 
 </html>
