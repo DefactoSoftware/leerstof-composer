@@ -13,14 +13,16 @@
   <div class="container" id="container">
     <div class="content">
       <ul class="list">
-        <li contenteditable="true">The mind is <b>adaptable</b></li>
+        <li contenteditable="true">Add some text</li>
       </ul>
       <a href="#" class="next_btn"><img src="next.svg"></a>
     </div>
     <img src="logo.svg" class="logo-sm">
   </div>
   <div class="buttons">
-    <button onclick="emphasize()">Emphasize</button>
+    <button onclick="formatDoc('italic');">Italic</button>
+    <button onclick="formatDoc('underline');">Underline</button>
+    <button onclick="formatDoc('bold');">Emphasize</button>
     <button onclick="save()" class="save">Save</button>
   </div>
 </body>

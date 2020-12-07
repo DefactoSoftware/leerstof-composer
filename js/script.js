@@ -7,9 +7,9 @@ save = function () {
   });
 };
 
-emphasize = function () {
-  document.execCommand('bold');
-};
+function formatDoc(cmd, val) {
+  document.execCommand(cmd, false, val);
+}
 
 add_item = function (focussed_li) {
   const li = document.createElement("li");
