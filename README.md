@@ -9,12 +9,10 @@
 
 4 ) Set document root to the folder of this app
 
-5 ) Add `127.0.0.1       leerstof.local` to your hosts file (`/etc/hosts`)
+5 ) Start MAMP server
 
-6 ) Start MAMP server
+6 ) Browse to http://localhost
 
-7 ) Browse to leerstof.local
+7 ) ???
 
-8 ) ???
-
-9 ) PROFIT
+8 ) PROFIT
