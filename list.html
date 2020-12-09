@@ -6,6 +6,7 @@
   <title>LEERSTOF - List</title>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/FileSaver.min.js"></script>
+  <script src="js/jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,14 +16,14 @@
       <ul class="list">
         <li contenteditable="true">Add some text</li>
       </ul>
-      <a href="#" class="next_btn"><img src="next.svg"></a>
     </div>
+    <a href="#" class="next_indicator"><img src="next-arrow.svg"></a>
     <img src="logo.svg" class="logo-sm">
   </div>
   <div class="buttons">
-    <button onclick="formatDoc('italic');">Italic</button>
-    <button onclick="formatDoc('underline');">Underline</button>
-    <button onclick="formatDoc('bold');">Emphasize</button>
+    <button onclick="document.execCommand('italic', false);">Italic</button>
+    <button onclick="document.execCommand('underline', false);">Underline</button>
+    <button onclick="document.execCommand('bold', false);">Emphasize</button>
     <button onclick="save()" class="save">Save</button>
   </div>
 </body>
