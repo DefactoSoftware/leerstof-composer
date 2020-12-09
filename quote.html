@@ -23,13 +23,14 @@
         </figcaption>
       </figure>
     </div>
-    <a href="#" class="next_indicator"><img src="next-arrow.svg"></a>
-    <img src="logo.svg" class="logo-sm">
+    <a href="#" class="next_indicator"></a>
+    <div class="logo-sm"></div>
   </div>
   <div class="buttons">
-    <button onclick="document.execCommand('italic', false);">Italic</button>
-    <button onclick="document.execCommand('underline', false);">Underline</button>
-    <button onclick="document.execCommand('bold', false);">Emphasize</button>
+    <button class="text-style" onclick="document.execCommand('italic', false);">Italic</button>
+    <button class="text-style" onclick="document.execCommand('underline', false);">Underline</button>
+    <button class="text-style" onclick="document.execCommand('bold', false);">Emphasize</button>
+    <div class="themes"></div>
     <button onclick="save()" class="save">Save</button>
   </div>
 </body>

@@ -15,14 +15,15 @@
   <div class="container" id="container">
     <div class="content">
       <p contenteditable="true">Ignorance and fear are matters of the mind - and the mind is adaptable</p>
-      <a href="#" class="next_btn"><img src="next.svg"></a>
+      <a href="#" class="next_btn"></a>
     </div>
-    <img src="logo.svg" class="logo">
+    <div class="logo"></div>
   </div>
   <div class="buttons">
-    <button onclick="document.execCommand('italic', false);">Italic</button>
-    <button onclick="document.execCommand('underline', false);">Underline</button>
-    <button onclick="document.execCommand('bold', false);">Emphasize</button>
+    <button class="text-style" onclick="document.execCommand('italic', false);">Italic</button>
+    <button class="text-style" onclick="document.execCommand('underline', false);">Underline</button>
+    <button class="text-style" onclick="document.execCommand('bold', false);">Emphasize</button>
+    <div class="themes"></div>
     <button onclick="save()" class="save">Save</button>
   </div>
 </body>
