@@ -1,4 +1,13 @@
 $(function () {
+
+  nav = function () {
+    const nav = ["index", "list", "quote"];
+
+    $.each(nav, function (index, value) {
+      $(".nav").append("<a href='" + value + ".html'>" + value + "</a>")
+    });
+  }
+
   save = function () {
     html2canvas(document.querySelector("#container")).then(canvas => {
       canvas.toBlob(function (blob) {
@@ -17,7 +26,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
 
-    $("<li>").addClass("li").prop("contenteditable", true).insertAfter(focused_li).focus();
+    $("<li>").prop("contenteditable", true).insertAfter(focused_li).focus();
   };
 
   remove_item = function (focused_li, e) {
@@ -32,6 +41,10 @@ $(function () {
       }
     }
   };
+
+  doc_change = function (bool) {
+    $(".save").prop("disabled", !bool);
+  }
 
   prev_item = function (focused_li, e) {
     e.preventDefault();
@@ -50,6 +63,14 @@ $(function () {
       return false;
     }
   };
+
+  $(document).on("input", function () {
+    doc_change(true);
+  });
+
+  $(".save").on("click", function () {
+    doc_change(false);
+  });
 
   $(".list").on("keydown", function (e) {
     var focused_li = document.activeElement;
@@ -70,4 +91,7 @@ $(function () {
       remove_item($(focused_li), e);
     }
   });
+
+  doc_change(false);
+  nav();
 });

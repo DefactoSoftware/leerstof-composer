@@ -36,18 +36,18 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "proximanova-extrabold", sans-serif;
-  font-size: 90px;
-  line-height: 1.1;
   margin: 0;
   min-height: 100vh;
-  text-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
 }
 
 .container {
   background: var(--background);
+  font-size: 90px;
   height: 1080px;
+  line-height: 1.1;
   margin: 50px auto;
   position: relative;
+  text-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
   width: 1080px;
 }
 
@@ -108,6 +108,23 @@ p {
   width: 150px;
 }
 
+.nav {
+  background: #222;
+  display: flex;
+  font-family: sans-serif;
+}
+
+.nav a {
+  color: white;
+  display: block;
+  font-size: 20px;
+  padding: 20px;
+  text-decoration: none
+}
+.nav .active {
+
+}
+
 .buttons {
   display: flex;
   margin: 0 auto 30px;
@@ -132,23 +149,28 @@ button {
   margin: 0 0 0 auto;
 }
 
-ul {
+.save:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.content ul {
   list-style: none;
   padding: 0;
 }
 
-li {
+.content li {
   padding: 0.15em 0 0.15em 0.6em;
 }
 
-li:before {
+.content li:before {
   content: '\2022';
   margin: 0 0.1em 0 -0.6em;
   position: absolute;
   text-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
 }
 
-li:focus {
+.content li:focus {
   background: rgba(255,255,255,.05);
   border-radius: 10px;
   margin-left: -0.2em;
@@ -156,6 +178,41 @@ li:focus {
   transition: background 0.3s ease;
 }
 
-li:focus:before {
+.content li:focus:before {
   margin: 0 -0.1em 0 -0.6em;
+}
+
+blockquote {
+  padding-left: 1em;
+  position: relative;
+}
+
+blockquote::before {
+  background: var(--text);
+  bottom: 0;
+  box-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 10px;
+}
+
+blockquote::after {
+  background: var(--background);
+  content: open-quote;
+  display: block;
+  font-size: 1.4em;
+  height: 0.8em;
+  left: 0;
+  line-height: 1.15em;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+figcaption {
+  font-size: 0.5em;
+  text-align: center;
 }
