@@ -1,7 +1,7 @@
 $(function () {
 
   nav = function () {
-    const nav = ["index", "list", "quote"];
+    const nav = ["index", "list", "quote", "video"];
 
     $.each(nav, function (index, value) {
       $(".nav").append("<a href='" + value + ".html'>" + value + "</a>")
@@ -91,6 +91,16 @@ $(function () {
       remove_item($(focused_li), e);
     }
   });
+
+  set_video_url = function () {
+    let yt_id = prompt('Enter Youtube ID');
+
+    if (!yt_id) {
+      yt_id = "TxBj8R7XKe4";
+    }
+
+    $("iframe").prop("src", "https://www.youtube.com/embed/" + yt_id + "?autoplay=1&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0");
+  }
 
   doc_change(false);
   nav();

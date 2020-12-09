@@ -68,6 +68,10 @@ p {
   transform: translateY(-50%);
 }
 
+.content.video {
+  padding: 0;
+}
+
 .next_btn {
   align-items: center;
   display: flex;
@@ -204,9 +208,9 @@ blockquote::after {
   content: open-quote;
   display: block;
   font-size: 1.4em;
-  height: 0.8em;
+  height: 1em;
   left: 0;
-  line-height: 1.15em;
+  line-height: 1.3em;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);

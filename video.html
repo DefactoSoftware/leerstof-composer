@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LEERSTOF - Video</title>
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/FileSaver.min.js"></script>
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-1">
+  <nav class="nav"></nav>
+  <div class="container" id="container">
+    <div class="video">
+      <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="1080" height="1080"
+        type="text/html"
+        src="https://www.youtube.com/embed/_xKCwzgI68s?autoplay=1&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0">
+      </iframe>
+    </div>
+    <a href="#" class="next_indicator"><img src="next-arrow.svg"></a>
+    <img src="logo.svg" class="logo-sm">
+  </div>
+  <div class="buttons">
+    <button onclick="set_video_url()">Set video ID</button>
+    <button onclick="save()" class="save">Save</button>
+  </div>
+</body>
+
+<script src="js/script.js"></script>
+
+</html>
