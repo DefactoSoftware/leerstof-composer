@@ -1,10 +1,17 @@
 $(function () {
 
+  var focused_li = $();
+
   nav = function () {
-    const nav = ["index", "list", "quote", "video"];
+    const nav = ["index", "list", "quote", "video", "poll"];
 
     $.each(nav, function (index, value) {
-      $(".nav").append("<a href='" + value + ".html'>" + value + "</a>")
+      $(".nav").append("<a href='" + value + ".html' class='" + value + "'>" + value + "</a>")
+      if (~window.location.pathname.indexOf(value)) {
+        $("." + value).addClass("active");
+      } else if (window.location.pathname === "/") {
+        $(".index").addClass("active");
+      }
     });
   }
 
@@ -81,7 +88,7 @@ $(function () {
 
   document.onselectionchange = () => {
     var sel = window.getSelection().getRangeAt(0);
-    console.log(sel.startOffset != sel.endOffset);
+
     if (sel.startOffset != sel.endOffset) {
       $(".text-style").each(function () {
         $(this).prop("disabled", false);
@@ -97,25 +104,59 @@ $(function () {
     doc_change(false);
   });
 
-  $(".list").on("keydown", function (e) {
-    var focused_li = document.activeElement;
+  $("ol, ul").on("keydown click", function (e) {
+    if ($(document.activeElement).is("li")) {
+      focused_li = $(document.activeElement)
+    }
 
     if (e.keyCode === 13) { // return
-      add_item($(focused_li), e);
+      add_item(focused_li, e);
     }
 
     if (e.keyCode === 38) { // up
-      prev_item($(focused_li), e);
+      prev_item(focused_li, e);
     }
 
     if (e.keyCode === 40) { // down
-      next_item($(focused_li), e);
+      next_item(focused_li, e);
     }
 
     if (e.keyCode === 8) { // backspace
-      remove_item($(focused_li), e);
+      remove_item(focused_li, e);
     }
   });
+
+  $(document).on("click", ".qa > span:not(.active)", function () {
+    $(".content").toggleClass("question-screen answers-screen");
+    $(".qa > span").each(function () {
+      $(this).toggleClass("active");
+    });
+  });
+
+  $(document).on("click", ".buttons .correct", function (e) {
+    if (focused_li.hasClass("correct")) {
+      focused_li.removeClass("correct");
+      $(this).removeClass("active");
+    } else {
+      $("li.correct").removeClass("correct");
+      focused_li.addClass("correct");
+      $(this).addClass("active");
+    }
+  });
+
+  $(document).on("focus", ".answers li", function () {
+    if ($(this).hasClass("correct")) {
+      console.log("clicked correct li");
+      $("button.correct").addClass("active");
+    } else {
+      console.log("clicked not correct li");
+      $("button.correct").removeClass("active");
+    }
+  })
+
+  $(document).on("blur", ".question li.correct", function () {
+    $("button.correct").removeClass("active");
+  })
 
   set_video_url = function () {
     let yt_id = prompt('Enter Youtube ID');

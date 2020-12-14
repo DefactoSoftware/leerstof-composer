@@ -72,6 +72,7 @@
 
 body, * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 body {
@@ -79,7 +80,6 @@ body {
   color: var(--text);
   display: flex;
   flex-direction: column;
-  font-family: "proximanova-extrabold", sans-serif;
   margin: 0;
   min-height: 100vh;
 }
@@ -110,6 +110,10 @@ p {
   right: var(--padding);
   top: 50%;
   transform: translateY(-50%);
+}
+
+.content * {
+  font-family: "proximanova-extrabold", sans-serif;
 }
 
 .content.video {
@@ -173,13 +177,36 @@ p {
   text-decoration: none
 }
 .nav .active {
-
+  background: white;
+  color: #222;
 }
 
 .buttons {
   display: flex;
   margin: 0 auto 30px;
   width: 1080px;
+}
+
+.qa {
+  border: 1px solid var(--emphasis);
+  border-radius: 5px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.qa span {
+  color: var(--emphasis);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 26px;
+  padding: 10px 20px;
+  vertical-align: middle;
+}
+
+.buttons .active {
+  background: var(--emphasis);
+  color: #fff;
+  cursor: default;
 }
 
 button {
@@ -190,7 +217,7 @@ button {
   cursor: pointer;
   flex: none;
   font-size: 20px;
-  margin-right: 10px;  
+  margin-right: 10px;
   padding: 10px 20px;
 }
 
@@ -206,22 +233,37 @@ button:disabled {
 }
 
 .content ul {
+  font-size: 0.85em;
   list-style: none;
   padding: 0;
 }
 
-.content li {
+.content ol {
+  font-size: 0.85em;
+  list-style: none;
+  padding: 0;
+}
+
+ol li {
+  counter-increment: inst;
+}
+
+ol li::before {
+  content: counter(inst) ". ";
+}
+
+.list li {
   padding: 0.15em 0 0.15em 0.6em;
 }
 
-.content li:before {
+.list li:before {
   content: '\2022';
   margin: 0 0.1em 0 -0.6em;
   position: absolute;
   text-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
 }
 
-.content li:focus {
+.list li:focus {
   background: rgba(255,255,255,.05);
   border-radius: 10px;
   margin-left: -0.2em;
@@ -229,8 +271,31 @@ button:disabled {
   transition: background 0.3s ease;
 }
 
-.content li:focus:before {
+.list li:focus:before {
   margin: 0 -0.1em 0 -0.6em;
+}
+
+.answers {
+  margin: 0.6em 0;
+}
+
+.answers li {
+  background: rgba(255,255,255,.05);
+  border-radius: 10px;
+  margin-bottom: 0.3em;
+  padding: 0.15em 0.4em;
+}
+
+.answers-screen li {
+  background: transparent;
+}
+
+.answers-screen .correct {
+  border: 0.1em solid var(--text);
+  box-shadow:
+    -0.1em 0.1em 0 rgba(0, 0, 0, 0.25),
+    -0.1em 0.1em 0 rgba(0, 0, 0, 0.25) inset;
+  margin: -0.1em -0.1em 0.2em;
 }
 
 blockquote {
