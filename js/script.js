@@ -90,11 +90,11 @@ $(function () {
     var sel = window.getSelection().getRangeAt(0);
 
     if (sel.startOffset != sel.endOffset) {
-      $(".text-style").each(function () {
+      $(".text-style button").each(function () {
         $(this).prop("disabled", false);
       });
     } else {
-      $(".text-style").each(function () {
+      $(".text-style button").each(function () {
         $(this).prop("disabled", true);
       });
     }
@@ -171,7 +171,7 @@ $(function () {
   nav();
   build_theme_switcher(3);
 
-  $(".text-style").each(function () {
+  $(".text-style button").each(function () {
     $(this).prop("disabled", true);
   });
 

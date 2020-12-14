@@ -1,5 +1,7 @@
 :root {
   --padding: 80px;
+
+  --gray: #888;
 }
 
 .theme-1 {
@@ -211,25 +213,50 @@ p {
 
 button {
   background: transparent;
-  border: 1px solid var(--emphasis);
-  border-radius: 5px;
-  color: var(--emphasis);
+  border: none;
   cursor: pointer;
-  flex: none;
   font-size: 20px;
-  margin-right: 10px;
+  margin: 0;
   padding: 10px 20px;
-}
-
-.save {
-  background: var(--emphasis);
-  color: white;
-  margin: 0 0 0 auto;
 }
 
 button:disabled {
   cursor: default;
   opacity: 0.5;
+}
+
+button.ghost {
+  border: 1px solid var(--emphasis);
+  border-radius: 5px;
+  color: var(--emphasis);
+  flex: none;
+  margin-right: 10px;
+}
+
+button.save {
+  background: var(--emphasis);
+  border-radius: 5px;
+  color: white;
+  margin: 0 0 0 auto;
+}
+
+.text-style {
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  display: flex;
+  margin: 0 10px 0 0;
+}
+.text-style button {
+  border-right: 1px solid var(--gray);
+  margin: 0;
+}
+
+.text-style button:last-child {
+  border: none;
+}
+
+.text-style img {
+  width: 24px;
 }
 
 .content ul {

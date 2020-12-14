@@ -24,10 +24,18 @@
     <div class="logo-sm"></div>
   </div>
   <div class="buttons">
-    <button class="text-style" onclick="document.execCommand('italic', false);">Italic</button>
-    <button class="text-style" onclick="document.execCommand('underline', false);">Underline</button>
-    <button class="text-style" onclick="document.execCommand('bold', false);">Emphasize</button>
-    <button class="correct">correct</button>
+    <div class="text-style">
+      <button onclick="document.execCommand('italic', false);">
+        <img src="img/italic.svg">
+      </button>
+      <button onclick="document.execCommand('underline', false);">
+        <img src="img/underline.svg">
+      </button>
+      <button onclick="document.execCommand('bold', false);">
+        <img src="img/bold.svg">
+      </button>
+    </div>
+    <button class="correct ghost">correct</button>
     <div class="qa">
       <span class="question active">Question</span>
       <span class="answer">Answer</span>
