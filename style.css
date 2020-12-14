@@ -311,6 +311,20 @@ ol li::before {
   border-radius: 10px;
   margin-bottom: 0.3em;
   padding: 0.15em 0.4em;
+  position: relative;
+}
+
+.question-screen .correct::after {
+  background: var(--background);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 20px;
+  left: calc(0px - var(--padding) - 40px);
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+  width: 20px;
 }
 
 .answers-screen li {
