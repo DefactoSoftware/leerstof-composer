@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>LEERSTOF - Poll</title>
+  <title>LEERSTOF - QA</title>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/FileSaver.min.js"></script>
   <script src="js/jquery-3.5.1.min.js"></script>
@@ -12,12 +12,16 @@
 
 <body class="theme-1">
   <nav class="nav"></nav>
-  <div class="container" id="container">
+  <div class="container page-qa" id="container">
     <div class="content question-screen">
       <p class="question" contenteditable="true">Enter a Question?</p>
       <ol class="answers">
-        <li contenteditable="true">Add an answer</li>
-        <li contenteditable="true">Add another answer</li>
+        <li>
+          <span contenteditable="true">Add an answer</span>
+        </li>
+        <li>
+          <span contenteditable="true">Add another answer</span>
+        </li>
       </ol>
     </div>
     <a href="#" class="next_indicator"></a>
@@ -35,7 +39,7 @@
         <img src="img/bold.svg">
       </button>
     </div>
-    <button class="correct ghost" disabled="disabled">correct</button>
+    <button class="correct ghost" disabled="disabled">Correct</button>
     <div class="qa-switcher">
       <span class="question active">Question</span>
       <span class="answer">Answer</span>

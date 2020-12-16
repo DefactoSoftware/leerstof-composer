@@ -1,6 +1,7 @@
 :root {
   --padding: 80px;
 
+  --bar-height: 10px;
   --gray: #888;
 }
 
@@ -289,7 +290,7 @@ ol li::before {
   padding: 0.15em 0 0.15em 0.6em;
 }
 
-.list li:before {
+.list li::before {
   content: '\2022';
   margin: 0 0.1em 0 -0.6em;
   position: absolute;
@@ -304,7 +305,7 @@ ol li::before {
   transition: background 0.3s ease;
 }
 
-.list li:focus:before {
+.list li:focus::before {
   margin: 0 -0.1em 0 -0.6em;
 }
 
@@ -378,4 +379,35 @@ blockquote::after {
 figcaption {
   font-size: 0.5em;
   text-align: center;
+}
+
+.bar {
+  background: var(--emphasis);
+  box-shadow: -0.1em 0.1em 0 rgba(0, 0, 0, 0.25);
+  height: var(--bar-height);
+  margin-top: 20px;
+  position: relative;
+  transition: width 0.2s ease;
+}
+
+.question-screen .bar {
+  display: none;
+}
+
+.page-poll .answers-screen li > span,
+.page-poll .answers-screen li::before {
+  font-size: .8em;
+}
+
+.page-poll li>span {
+  display: inline-block;
+  min-width: 80%;
+}
+
+.bar .label {
+  color: var(--emphasis);
+  font-size: 0.6em;
+  left: calc(100% + 15px);
+  line-height: var(--bar-height);
+  position: absolute;
 }

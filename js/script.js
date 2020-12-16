@@ -1,6 +1,6 @@
 $(function () {
 
-  var focused_li = $();
+  var focused_elem, target_li = $();
 
   nav = function () {
     const nav = ["index", "list", "quote", "video", "qa", "poll"];
@@ -40,23 +40,27 @@ $(function () {
     });
   };
 
-  add_item = function (focused_li, e) {
+  add_item = function (e) {
     e.preventDefault();
     e.stopPropagation();
-
-    $("<li>").prop("contenteditable", true).insertAfter(focused_li).focus();
+    var elem = $("<li><span contenteditable='true'>");
+    if ($(".container").hasClass("page-poll")) {
+      elem.data("clicks", 0);
+      elem.append("<div class='bar' style='width: 0%'><span class='label'>0</span></div>");
+    }
+    elem.insertAfter(target_li);
+    elem.children("span:first").focus();
   };
 
-  remove_item = function (focused_li, e) {
+  remove_item = function (e) {
     e.stopPropagation();
-    focused_li.find("br:last-child").remove();
 
-    if (focused_li.is(':empty') && $("li").length > 1) {
-      if (prev_item(focused_li, e) != false) {
-        focused_li.remove();
-      } else if (!next_item(focused_li, e) != false) {
-        focused_li.remove();
-      }
+    focused_elem.find("br:last-child").remove();
+
+    if (focused_elem.is(':empty') && target_li.siblings().length > 1) {
+      e.preventDefault();
+
+      target_li.remove();
     }
   };
 
@@ -64,19 +68,23 @@ $(function () {
     $(".save").prop("disabled", !bool);
   }
 
-  prev_item = function (focused_li, e) {
+  prev_item = function (e) {
+    e.stopPropagation();
     e.preventDefault();
-    if (focused_li.prev().length) {
-      focused_li.prev().focus();
+
+    if (target_li.prev().length) {
+      target_li.prev().children("span:first").focus();
     } else {
       return false;
     }
   };
 
-  next_item = function (focused_li, e) {
+  next_item = function (e) {
+    e.stopPropagation();
     e.preventDefault();
-    if (focused_li.next().length) {
-      focused_li.next().focus();
+
+    if (target_li.next().length) {
+      target_li.next().children("span:first").focus();
     } else {
       return false;
     }
@@ -104,27 +112,26 @@ $(function () {
     doc_change(false);
   });
 
-  $("ol, ul").on("keydown click", function (e) {
-    $("button.correct").prop("disabled", false);
+  $("ol, ul, li span").on("keydown click", function (e) {
+    $("button.correct, button.vote").prop("disabled", false);
 
-    if ($(document.activeElement).is("li")) {
-      focused_li = $(document.activeElement)
-    }
+    focused_elem = $(document.activeElement)
+    target_li = focused_elem.parent();
 
     if (e.keyCode === 13) { // return
-      add_item(focused_li, e);
+      add_item(e);
     }
 
     if (e.keyCode === 38) { // up
-      prev_item(focused_li, e);
+      prev_item(e);
     }
 
     if (e.keyCode === 40) { // down
-      next_item(focused_li, e);
+      next_item(e);
     }
 
     if (e.keyCode === 8) { // backspace
-      remove_item(focused_li, e);
+      remove_item(e);
     }
   });
 
@@ -136,27 +143,45 @@ $(function () {
   });
 
   $(document).on("click", ".buttons .correct", function (e) {
-    if (focused_li.hasClass("correct")) {
-      focused_li.removeClass("correct");
+    if (target_li.hasClass("correct")) {
+      target_li.removeClass("correct");
       $(this).removeClass("active");
     } else {
       $("li.correct").removeClass("correct");
-      focused_li.addClass("correct");
+      target_li.addClass("correct");
       $(this).addClass("active");
     }
+
+    focused_elem.focus();
   });
 
   $(document).on("focus", ".answers li", function () {
     if ($(this).hasClass("correct")) {
-      console.log("clicked correct li");
       $("button.correct").addClass("active");
     } else {
-      console.log("clicked not correct li");
       $("button.correct").removeClass("active");
     }
-  }).on("blur", focused_li, function () {
-    $("button.correct").prop("disabled", true);
+  }).on("blur", focused_elem, function () {
+    $("button.correct, button.vote").prop("disabled", true);
   })
+
+  $(document).on("click", ".buttons .vote", function (e) {
+    var most_clicks = 0;
+    var clicks = target_li.data("clicks");
+    target_li.data("clicks", clicks + 1);
+
+    $(".answers li").each(function () {
+      if ($(this).data("clicks") > most_clicks) {
+        most_clicks = $(this).data("clicks");
+      }
+    });
+
+    $(".answers li").each(function () {
+      const clicks = $(this).data("clicks");
+      const percentage = clicks / most_clicks * 100 + "%";
+      $(this).find(".bar").css("width", percentage).find(".label").text(clicks);
+    });
+  });
 
   set_video_url = function () {
     let yt_id = prompt('Enter Youtube ID');

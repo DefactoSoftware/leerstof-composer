@@ -12,12 +12,22 @@
 
 <body class="theme-1">
   <nav class="nav"></nav>
-  <div class="container" id="container">
+  <div class="container page-poll" id="container">
     <div class="content question-screen">
       <p class="question" contenteditable="true">Enter a Question?</p>
       <ol class="answers">
-        <li contenteditable="true">Add an answer</li>
-        <li contenteditable="true">Add another answer</li>
+        <li data-clicks="12">
+          <span contenteditable="true">Add an answer</span>
+          <div class="bar" style="width: 100%"><span class="label">12</span></div>
+        </li>
+        <li data-clicks="3">
+          <span contenteditable="true">Add another answer</span>
+          <div class="bar" style="width: 25%"><span class="label">3</span></div>
+        </li>
+        <li data-clicks="7">
+          <span contenteditable="true">Inspiring answer</span>
+          <div class="bar" style="width: 58.33%"><span class="label">7</span></div>
+        </li>
       </ol>
     </div>
     <a href="#" class="next_indicator"></a>
@@ -35,6 +45,7 @@
         <img src="img/bold.svg">
       </button>
     </div>
+    <button class="vote ghost" disabled="disabled">Vote +1</button>
     <div class="qa-switcher">
       <span class="poll-options active">Options</span>
       <span class="poll-answers">Answers</span>
