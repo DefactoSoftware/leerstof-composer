@@ -3,7 +3,7 @@ $(function () {
   var focused_li = $();
 
   nav = function () {
-    const nav = ["index", "list", "quote", "video", "poll"];
+    const nav = ["index", "list", "quote", "video", "qa", "poll"];
 
     $.each(nav, function (index, value) {
       $(".nav").append("<a href='" + value + ".html' class='" + value + "'>" + value + "</a>")
@@ -105,6 +105,8 @@ $(function () {
   });
 
   $("ol, ul").on("keydown click", function (e) {
+    $("button.correct").prop("disabled", false);
+
     if ($(document.activeElement).is("li")) {
       focused_li = $(document.activeElement)
     }
@@ -126,9 +128,9 @@ $(function () {
     }
   });
 
-  $(document).on("click", ".qa > span:not(.active)", function () {
+  $(document).on("click", ".qa-switcher > span:not(.active)", function () {
     $(".content").toggleClass("question-screen answers-screen");
-    $(".qa > span").each(function () {
+    $(".qa-switcher > span").each(function () {
       $(this).toggleClass("active");
     });
   });
@@ -152,10 +154,8 @@ $(function () {
       console.log("clicked not correct li");
       $("button.correct").removeClass("active");
     }
-  })
-
-  $(document).on("blur", ".question li.correct", function () {
-    $("button.correct").removeClass("active");
+  }).on("blur", focused_li, function () {
+    $("button.correct").prop("disabled", true);
   })
 
   set_video_url = function () {

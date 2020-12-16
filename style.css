@@ -189,25 +189,29 @@ p {
   width: 1080px;
 }
 
-.qa {
+.qa-switcher {
   border: 1px solid var(--emphasis);
   border-radius: 5px;
   display: flex;
   margin-right: 10px;
 }
 
-.qa span {
+.qa-switcher span {
+  align-items: center;
   color: var(--emphasis);
   cursor: pointer;
+  display: flex;
   font-size: 20px;
-  line-height: 26px;
-  padding: 10px 20px;
+  padding: 0 20px;
   vertical-align: middle;
 }
 
 .buttons .active {
   background: var(--emphasis);
   color: #fff;
+}
+
+.buttons .qa-switcher .active {
   cursor: default;
 }
 
@@ -256,6 +260,8 @@ button.save {
 }
 
 .text-style img {
+  position: relative;
+  top: 3px;
   width: 24px;
 }
 
